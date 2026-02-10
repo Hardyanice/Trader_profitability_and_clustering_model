@@ -64,7 +64,12 @@ st.markdown("Enter average behavior metrics for a trader.")
 cluster_input = {}
 
 for col in cluster_features:
-    cluster_input[col] = st.number_input(col, value=0.0)
+    cluster_input[col] = st.number_input(
+    label=col,
+    value=0.0,
+    key=f"cluster_{col}"
+)
+
 
 if st.button("Identify Trader Type"):
     X_cluster = pd.DataFrame([cluster_input])[cluster_features]
